@@ -7,12 +7,8 @@ import org.springframework.stereotype.Component;
 public class PushPullLegsSplit implements Split{
 
     @Override
-    public String pickATypeOfSplit() {
+    public String pickATypeOfWorkout() {
         return "Push Workout";
     }
 
-    @Override
-    public String toString(){
-        return "Push Split";
-    }
 }
