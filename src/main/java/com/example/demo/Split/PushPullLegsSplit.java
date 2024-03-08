@@ -4,7 +4,7 @@ import com.example.demo.Workout.Workout;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PushSplit implements Split{
+public class PushPullLegsSplit implements Split{
 
     @Override
     public String pickATypeOfSplit() {
