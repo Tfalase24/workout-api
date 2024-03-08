@@ -6,9 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class PushPullLegsSplit implements Split{
 
+    private Workout workout;
+
     @Override
     public String pickATypeOfWorkout() {
-        return "Push Workout";
+        return "Default is Push";
     }
 
 }
