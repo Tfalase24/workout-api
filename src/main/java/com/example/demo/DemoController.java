@@ -10,4 +10,14 @@ public class DemoController {
     public String landingPage() {
         return "Welcome!!!";
     }
+
+    @GetMapping("/signup")
+    public String clickToSignUp(){
+        return "Type In Your Details To Sign Up";
+    }
+
+    @GetMapping("/signin")
+    public String clickToSignIn(){
+        return "Type In Your Details to Sign In";
+    }
 }
