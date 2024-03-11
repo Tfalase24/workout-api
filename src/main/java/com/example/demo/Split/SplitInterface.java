@@ -3,7 +3,7 @@ package com.example.demo.Split;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
-public interface Split {
+public interface SplitInterface {
 
     String pickATypeOfWorkout();
 

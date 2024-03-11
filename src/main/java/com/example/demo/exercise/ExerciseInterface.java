@@ -1,6 +1,6 @@
 package com.example.demo.exercise;
 
-public interface Exercise {
+public interface ExerciseInterface {
 
     String getExercise();
 }

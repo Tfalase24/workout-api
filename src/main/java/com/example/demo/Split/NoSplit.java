@@ -3,7 +3,7 @@ package com.example.demo.Split;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NoSplit implements Split {
+public class NoSplit implements SplitInterface {
 
     @Override
     public String pickATypeOfWorkout() {

@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SplitController {
 
-    private Split split;
+    private SplitInterface split;
 
     @Autowired
-    public SplitController(@Qualifier("noSplit") Split split){
+    public SplitController(@Qualifier("noSplit") SplitInterface split){
         this.split = split;
     }
 

@@ -1,12 +1,12 @@
 package com.example.demo.Split;
 
-import com.example.demo.Workout.Workout;
+import com.example.demo.Workout.WorkoutInterface;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PushPullLegsSplit implements Split {
+public class PushPullLegsSplit implements SplitInterface {
 
-    private Workout workout;
+    private WorkoutInterface workout;
 
     @Override
     public String pickATypeOfWorkout() {
