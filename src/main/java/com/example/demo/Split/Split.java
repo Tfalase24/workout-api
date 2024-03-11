@@ -2,6 +2,7 @@ package com.example.demo.Split;
 
 import com.example.demo.Workout.Workout;
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 public interface Split {
 
@@ -9,6 +10,11 @@ public interface Split {
 
     @PostConstruct
     default void chooseYourWorkout(){
-        System.out.println("Split has been created");
-    };
+        System.out.println("Split has been created, choose your workout");
+    }
+
+    @PreDestroy
+    default void endOfWorkout(){
+        System.out.println("Workout has ended");
+    }
 }
