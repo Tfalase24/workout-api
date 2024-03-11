@@ -20,9 +20,4 @@ public class SplitController {
         return "Pick Your Split: " + split.toString();
     }
 
-    @Autowired
-    public void setSplit(Split split){
-        this.split = split;
-    }
-
 }
