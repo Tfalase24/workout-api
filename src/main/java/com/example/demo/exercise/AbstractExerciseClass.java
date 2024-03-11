@@ -1,17 +1,20 @@
 package com.example.demo.exercise;
 
+import java.util.List;
+
 public abstract class AbstractExerciseClass {
 
-    String nameOfExercise;
-    DifficultyOfExercise difficultyOfExercise;
-    MuscleGroup muscleGroup;
-    MuscleGroup antagonistMuscleGroup;
-    ExerciseGoal exerciseGoal;
-    ExerciseType exerciseType;
-    int numberOfSets;
-    int numberOfReps;
+    private String nameOfExercise;
+    private DifficultyOfExercise difficultyOfExercise;
+    private List<MuscleGroup> muscleGroup;
+    private List<MuscleGroup> antagonistMuscleGroup;
+    private ExerciseGoal exerciseGoal;
+    private ExerciseType exerciseType;
+    private int numberOfSets;
+    private int numberOfReps;
 
-    public AbstractExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, MuscleGroup muscleGroup, MuscleGroup antagonistMuscleGroup, ExerciseGoal exerciseGoal, ExerciseType exerciseType, int numberOfSets, int numberOfReps) {
+    public AbstractExerciseClass(){}
+    public AbstractExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, List<MuscleGroup> muscleGroup, List<MuscleGroup> antagonistMuscleGroup, ExerciseGoal exerciseGoal, ExerciseType exerciseType, int numberOfSets, int numberOfReps) {
         this.nameOfExercise = nameOfExercise;
         this.difficultyOfExercise = difficultyOfExercise;
         this.muscleGroup = muscleGroup;
@@ -19,6 +22,74 @@ public abstract class AbstractExerciseClass {
         this.exerciseGoal = exerciseGoal;
         this.exerciseType = exerciseType;
         this.numberOfSets = numberOfSets;
+        this.numberOfReps = numberOfReps;
+    }
+
+    int calculateWorkLoad(){
+        return numberOfReps * numberOfSets;
+    }
+
+    public String getNameOfExercise() {
+        return nameOfExercise;
+    }
+
+    public void setNameOfExercise(String nameOfExercise) {
+        this.nameOfExercise = nameOfExercise;
+    }
+
+    public DifficultyOfExercise getDifficultyOfExercise() {
+        return difficultyOfExercise;
+    }
+
+    public void setDifficultyOfExercise(DifficultyOfExercise difficultyOfExercise) {
+        this.difficultyOfExercise = difficultyOfExercise;
+    }
+
+    public List<MuscleGroup> getMuscleGroup() {
+        return muscleGroup;
+    }
+
+    public void setMuscleGroup(List<MuscleGroup> muscleGroup) {
+        this.muscleGroup = muscleGroup;
+    }
+
+    public List<MuscleGroup> getAntagonistMuscleGroup() {
+        return antagonistMuscleGroup;
+    }
+
+    public void setAntagonistMuscleGroup(List<MuscleGroup> antagonistMuscleGroup) {
+        this.antagonistMuscleGroup = antagonistMuscleGroup;
+    }
+
+    public ExerciseGoal getExerciseGoal() {
+        return exerciseGoal;
+    }
+
+    public void setExerciseGoal(ExerciseGoal exerciseGoal) {
+        this.exerciseGoal = exerciseGoal;
+    }
+
+    public ExerciseType getExerciseType() {
+        return exerciseType;
+    }
+
+    public void setExerciseType(ExerciseType exerciseType) {
+        this.exerciseType = exerciseType;
+    }
+
+    public int getNumberOfSets() {
+        return numberOfSets;
+    }
+
+    public void setNumberOfSets(int numberOfSets) {
+        this.numberOfSets = numberOfSets;
+    }
+
+    public int getNumberOfReps() {
+        return numberOfReps;
+    }
+
+    public void setNumberOfReps(int numberOfReps) {
         this.numberOfReps = numberOfReps;
     }
 }
