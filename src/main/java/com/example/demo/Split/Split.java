@@ -1,6 +1,5 @@
 package com.example.demo.Split;
 
-import com.example.demo.Workout.Workout;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
