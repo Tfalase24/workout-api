@@ -1,6 +1,7 @@
 package com.example.demo.exercise;
 
 import java.util.List;
+import java.util.Locale;
 
 public abstract class AbstractExerciseClass {
 
@@ -10,24 +11,18 @@ public abstract class AbstractExerciseClass {
     private List<MuscleGroup> antagonistMuscleGroup;
     private ExerciseGoal exerciseGoal;
     private ExerciseType exerciseType;
-    private int numberOfSets;
-    private int numberOfReps;
+
 
     public AbstractExerciseClass(){}
-    public AbstractExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, List<MuscleGroup> muscleGroup, List<MuscleGroup> antagonistMuscleGroup, ExerciseGoal exerciseGoal, ExerciseType exerciseType, int numberOfSets, int numberOfReps) {
-        this.nameOfExercise = nameOfExercise;
+    public AbstractExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, List<MuscleGroup> muscleGroup, List<MuscleGroup> antagonistMuscleGroup, ExerciseGoal exerciseGoal, ExerciseType exerciseType) {
+        this.nameOfExercise = nameOfExercise.toUpperCase(Locale.ROOT);
         this.difficultyOfExercise = difficultyOfExercise;
         this.muscleGroup = muscleGroup;
         this.antagonistMuscleGroup = antagonistMuscleGroup;
         this.exerciseGoal = exerciseGoal;
         this.exerciseType = exerciseType;
-        this.numberOfSets = numberOfSets;
-        this.numberOfReps = numberOfReps;
     }
 
-    int calculateWorkLoad(){
-        return numberOfReps * numberOfSets;
-    }
 
     public String getNameOfExercise() {
         return nameOfExercise;
@@ -77,19 +72,4 @@ public abstract class AbstractExerciseClass {
         this.exerciseType = exerciseType;
     }
 
-    public int getNumberOfSets() {
-        return numberOfSets;
-    }
-
-    public void setNumberOfSets(int numberOfSets) {
-        this.numberOfSets = numberOfSets;
-    }
-
-    public int getNumberOfReps() {
-        return numberOfReps;
-    }
-
-    public void setNumberOfReps(int numberOfReps) {
-        this.numberOfReps = numberOfReps;
-    }
 }
