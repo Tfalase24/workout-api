@@ -12,5 +12,6 @@ public enum MuscleGroup {
     CALF,
     FOREARM,
     TIBIALIS,
-    NECK
+    NECK,
+    HIP
 }
