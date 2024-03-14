@@ -1,16 +1,29 @@
 package com.example.demo.exercise;
 
-import java.util.ArrayList;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.List;
 import java.util.Locale;
 
+@Entity
+@Table(name="exercise")
 public abstract class AbstractExerciseClass {
 
+    @Id
+    @Column(name="name")
     private String nameOfExercise;
+    @Column(name="difficulty")
     private DifficultyOfExercise difficultyOfExercise;
+    @Column(name="muscle_group")
     private List<MuscleGroup> muscleGroup;
+    @Column(name="antagonist_muscle_group")
     private List<MuscleGroup> antagonistMuscleGroup;
+    @Column(name="exercise_goal")
     private ExerciseGoal exerciseGoal;
+    @Column(name="exercise_type")
     private ExerciseType exerciseType;
     private int sets;
     private int reps;
