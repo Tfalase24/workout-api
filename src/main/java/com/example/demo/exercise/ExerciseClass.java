@@ -10,9 +10,11 @@ import java.util.Locale;
 
 @Entity
 @Table(name="exercise")
-public abstract class AbstractExerciseClass {
+public  class ExerciseClass {
 
     @Id
+    @Column(name="id")
+    private long id;
     @Column(name="name")
     private String nameOfExercise;
     @Column(name="difficulty")
@@ -29,8 +31,8 @@ public abstract class AbstractExerciseClass {
     private int reps;
 
 
-    public AbstractExerciseClass(){}
-    public AbstractExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, List<MuscleGroup> muscleGroup, List<MuscleGroup> antagonistMuscleGroup, ExerciseGoal exerciseGoal, ExerciseType exerciseType) {
+    public ExerciseClass(){}
+    public ExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, List<MuscleGroup> muscleGroup, List<MuscleGroup> antagonistMuscleGroup, ExerciseGoal exerciseGoal, ExerciseType exerciseType) {
         this.nameOfExercise = nameOfExercise.toUpperCase(Locale.ROOT);
         this.difficultyOfExercise = difficultyOfExercise;
         this.muscleGroup = muscleGroup;
