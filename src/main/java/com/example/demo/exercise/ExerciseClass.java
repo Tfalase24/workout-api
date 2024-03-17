@@ -1,46 +1,44 @@
 package com.example.demo.exercise;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-import java.util.List;
+import jakarta.persistence.*;
 import java.util.Locale;
+import java.util.Set;
 
 @Entity
 @Table(name="exercise")
-public  class ExerciseClass {
+public class ExerciseClass {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private long id;
     @Column(name="name")
     private String nameOfExercise;
     @Column(name="difficulty")
+    @Enumerated(EnumType.STRING)
     private DifficultyOfExercise difficultyOfExercise;
     @Column(name="muscle_group")
-    private List<MuscleGroup> muscleGroup;
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(targetClass = MuscleGroup.class)
+    @CollectionTable(name = "exercise_muscle_group", joinColumns = @JoinColumn(name = "exercise_id"))
+    private Set<MuscleGroup> muscleGroup;
     @Column(name="antagonist_muscle_group")
-    private List<MuscleGroup> antagonistMuscleGroup;
-    @Column(name="exercise_goal")
-    private ExerciseGoal exerciseGoal;
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(targetClass = MuscleGroup.class)
+    @CollectionTable(name = "exercise_muscle_group", joinColumns = @JoinColumn(name = "exercise_id"))
+    private Set<MuscleGroup> antagonistMuscleGroup;
     @Column(name="exercise_type")
     private ExerciseType exerciseType;
-    private int sets;
-    private int reps;
 
 
     public ExerciseClass(){}
-    public ExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, List<MuscleGroup> muscleGroup, List<MuscleGroup> antagonistMuscleGroup, ExerciseGoal exerciseGoal, ExerciseType exerciseType) {
+    public ExerciseClass(long id, String nameOfExercise, DifficultyOfExercise difficultyOfExercise, Set<MuscleGroup> muscleGroup, Set<MuscleGroup> antagonistMuscleGroup, ExerciseType exerciseType) {
+        this.id = id;
         this.nameOfExercise = nameOfExercise.toUpperCase(Locale.ROOT);
         this.difficultyOfExercise = difficultyOfExercise;
         this.muscleGroup = muscleGroup;
         this.antagonistMuscleGroup = antagonistMuscleGroup;
-        this.exerciseGoal = exerciseGoal;
         this.exerciseType = exerciseType;
-        this.sets = setSets(exerciseGoal);
-        this.reps = setReps(exerciseGoal);
     }
 
 
@@ -60,30 +58,21 @@ public  class ExerciseClass {
         this.difficultyOfExercise = difficultyOfExercise;
     }
 
-    public List<MuscleGroup> getMuscleGroup() {
+    public Set<MuscleGroup> getMuscleGroup() {
         return muscleGroup;
     }
 
-    public void setMuscleGroup(List<MuscleGroup> muscleGroup) {
+    public void setMuscleGroup(Set<MuscleGroup> muscleGroup) {
         this.muscleGroup = muscleGroup;
     }
 
-    public List<MuscleGroup> getAntagonistMuscleGroup() {
+    public Set<MuscleGroup> getAntagonistMuscleGroup() {
         return antagonistMuscleGroup;
     }
 
-    public void setAntagonistMuscleGroup(List<MuscleGroup> antagonistMuscleGroup) {
+    public void setAntagonistMuscleGroup(Set<MuscleGroup> antagonistMuscleGroup) {
         this.antagonistMuscleGroup = antagonistMuscleGroup;
     }
-
-    public ExerciseGoal getExerciseGoal() {
-        return exerciseGoal;
-    }
-
-    public void setExerciseGoal(ExerciseGoal exerciseGoal) {
-        this.exerciseGoal = exerciseGoal;
-    }
-
     public ExerciseType getExerciseType() {
         return exerciseType;
     }
@@ -116,18 +105,4 @@ public  class ExerciseClass {
         }
         return reps;
     }
-
-    public int getSets() {
-        return sets;
-    }
-
-    public int getReps() {
-        return reps;
-    }
-
-    @Override
-    public String toString() {
-        return "This exercise is the %s, perform %d reps for %d sets (%s reps and sets)".formatted(getNameOfExercise(), getReps(), getSets(), getExerciseGoal());
-    }
-
 }
