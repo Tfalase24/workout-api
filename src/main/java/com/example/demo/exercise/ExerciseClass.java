@@ -28,12 +28,12 @@ public class ExerciseClass {
     @CollectionTable(name = "exercise_muscle_group", joinColumns = @JoinColumn(name = "exercise_id"))
     private Set<MuscleGroup> antagonistMuscleGroup;
     @Column(name="exercise_type")
+    @Enumerated(EnumType.STRING)
     private ExerciseType exerciseType;
 
 
     public ExerciseClass(){}
-    public ExerciseClass(long id, String nameOfExercise, DifficultyOfExercise difficultyOfExercise, Set<MuscleGroup> muscleGroup, Set<MuscleGroup> antagonistMuscleGroup, ExerciseType exerciseType) {
-        this.id = id;
+    public ExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, Set<MuscleGroup> muscleGroup, Set<MuscleGroup> antagonistMuscleGroup, ExerciseType exerciseType) {
         this.nameOfExercise = nameOfExercise.toUpperCase(Locale.ROOT);
         this.difficultyOfExercise = difficultyOfExercise;
         this.muscleGroup = muscleGroup;
