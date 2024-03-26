@@ -6,9 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @SpringBootApplication
 public class WorkoutApiApplication {
 
@@ -21,14 +18,22 @@ public class WorkoutApiApplication {
 		return runner -> {
 			System.out.println("Command Line Runner has started");
 			addExerciseToDatabase(exerciseDAO);
+			readExerciseFromDatabase(exerciseDAO);
 			System.out.println("Command Line Runner has ended");
 		};
 	}
 
 	private void addExerciseToDatabase(ExerciseDAO exerciseDAO){
 		System.out.println("Creating new exercise object");
-		ExerciseClass squat = new ExerciseClass("Squat", DifficultyOfExercise.MEDIUM, MuscleGroup.QUADRICEP, MuscleGroup.HAMSTRING, ExerciseType.SHORTENING);
+		Exercise squat = new Exercise("Squat", DifficultyOfExercise.MEDIUM, MuscleGroup.QUADRICEP, MuscleGroup.HAMSTRING, ExerciseType.SHORTENING);
 		System.out.println("Saving the Exercise");
 		exerciseDAO.save(squat);
+	}
+
+	private void readExerciseFromDatabase(ExerciseDAO exerciseDAO){
+		System.out.println("Reading table now");
+		Exercise responseExercise = exerciseDAO.findExercise("SQUAT");
+		System.out.println(responseExercise);
+		System.out.println("Finished reading table");
 	}
 }
