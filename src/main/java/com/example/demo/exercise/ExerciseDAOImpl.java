@@ -27,5 +27,12 @@ public class ExerciseDAOImpl implements ExerciseDAO{
         return theQuery.getSingleResult();
     }
 
+    @Override
+    public Exercise findByMuscleGroup(MuscleGroup muscleGroup) {
+        TypedQuery<Exercise> theQuery = entityManager.createQuery("FROM Exercise WHERE muscleGroup=:theData", Exercise.class);
+        theQuery.setParameter("theData", muscleGroup);
+        return theQuery.getSingleResult();
+    }
+
 
 }
