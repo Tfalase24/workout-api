@@ -19,21 +19,17 @@ public class ExerciseClass {
     private DifficultyOfExercise difficultyOfExercise;
     @Column(name="muscle_group")
     @Enumerated(EnumType.STRING)
-    @ElementCollection(targetClass = MuscleGroup.class)
-    @CollectionTable(name = "exercise_muscle_group", joinColumns = @JoinColumn(name = "exercise_id"))
-    private Set<MuscleGroup> muscleGroup;
+    private MuscleGroup muscleGroup;
     @Column(name="antagonist_muscle_group")
     @Enumerated(EnumType.STRING)
-    @ElementCollection(targetClass = MuscleGroup.class)
-    @CollectionTable(name = "exercise_muscle_group", joinColumns = @JoinColumn(name = "exercise_id"))
-    private Set<MuscleGroup> antagonistMuscleGroup;
+    private MuscleGroup antagonistMuscleGroup;
     @Column(name="exercise_type")
     @Enumerated(EnumType.STRING)
     private ExerciseType exerciseType;
 
 
     public ExerciseClass(){}
-    public ExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, Set<MuscleGroup> muscleGroup, Set<MuscleGroup> antagonistMuscleGroup, ExerciseType exerciseType) {
+    public ExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, MuscleGroup muscleGroup, MuscleGroup antagonistMuscleGroup, ExerciseType exerciseType) {
         this.nameOfExercise = nameOfExercise.toUpperCase(Locale.ROOT);
         this.difficultyOfExercise = difficultyOfExercise;
         this.muscleGroup = muscleGroup;
@@ -58,19 +54,19 @@ public class ExerciseClass {
         this.difficultyOfExercise = difficultyOfExercise;
     }
 
-    public Set<MuscleGroup> getMuscleGroup() {
+    public MuscleGroup getMuscleGroup() {
         return muscleGroup;
     }
 
-    public void setMuscleGroup(Set<MuscleGroup> muscleGroup) {
+    public void setMuscleGroup(MuscleGroup muscleGroup) {
         this.muscleGroup = muscleGroup;
     }
 
-    public Set<MuscleGroup> getAntagonistMuscleGroup() {
+    public MuscleGroup getAntagonistMuscleGroup() {
         return antagonistMuscleGroup;
     }
 
-    public void setAntagonistMuscleGroup(Set<MuscleGroup> antagonistMuscleGroup) {
+    public void setAntagonistMuscleGroup(MuscleGroup antagonistMuscleGroup) {
         this.antagonistMuscleGroup = antagonistMuscleGroup;
     }
     public ExerciseType getExerciseType() {
