@@ -19,6 +19,7 @@ public class WorkoutApiApplication {
 			System.out.println("Command Line Runner has started");
 			addExerciseToDatabase(exerciseDAO);
 			readExerciseFromDatabase(exerciseDAO);
+			readExerciseFromDatabaseByMuscleGroup(exerciseDAO, MuscleGroup.QUADRICEP);
 			System.out.println("Command Line Runner has ended");
 		};
 	}
@@ -35,5 +36,12 @@ public class WorkoutApiApplication {
 		Exercise responseExercise = exerciseDAO.findExercise("SQUAT");
 		System.out.println(responseExercise);
 		System.out.println("Finished reading table");
+	}
+
+	private void readExerciseFromDatabaseByMuscleGroup(ExerciseDAO exerciseDAO, MuscleGroup muscleGroup){
+		System.out.println("Reading table and searching for exercise of: " +  muscleGroup);
+		Exercise responseExercise = exerciseDAO.findByMuscleGroup(muscleGroup);
+		System.out.println(responseExercise);
+		System.out.println("Finished reading the table again");
 	}
 }
