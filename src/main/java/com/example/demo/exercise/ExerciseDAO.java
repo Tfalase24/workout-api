@@ -5,4 +5,6 @@ public interface ExerciseDAO {
     void save(Exercise exercise);
 
     Exercise findExercise(String name);
+
+    Exercise findByMuscleGroup(MuscleGroup muscleGroup);
 }
