@@ -27,7 +27,7 @@ public class WorkoutApiApplication {
 
 	private void addExerciseToDatabase(ExerciseDAO exerciseDAO){
 		System.out.println("Creating new exercise object");
-		ExerciseClass squat = new ExerciseClass("Squat", DifficultyOfExercise.MEDIUM, new HashSet<>(Set.of(MuscleGroup.GLUTE, MuscleGroup.QUADRICEP)), new HashSet<>(Set.of(MuscleGroup.HAMSTRING, MuscleGroup.CALF)), ExerciseType.SHORTENING);
+		ExerciseClass squat = new ExerciseClass("Squat", DifficultyOfExercise.MEDIUM, MuscleGroup.QUADRICEP, MuscleGroup.HAMSTRING, ExerciseType.SHORTENING);
 		System.out.println("Saving the Exercise");
 		exerciseDAO.save(squat);
 	}
