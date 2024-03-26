@@ -2,5 +2,7 @@ package com.example.demo.exercise;
 
 public interface ExerciseDAO {
 
-    void save(ExerciseClass exercise);
+    void save(Exercise exercise);
+
+    Exercise findExercise(String name);
 }
