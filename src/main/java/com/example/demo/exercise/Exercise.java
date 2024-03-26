@@ -2,11 +2,10 @@ package com.example.demo.exercise;
 
 import jakarta.persistence.*;
 import java.util.Locale;
-import java.util.Set;
 
 @Entity
 @Table(name="exercise")
-public class ExerciseClass {
+public class Exercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +27,8 @@ public class ExerciseClass {
     private ExerciseType exerciseType;
 
 
-    public ExerciseClass(){}
-    public ExerciseClass(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, MuscleGroup muscleGroup, MuscleGroup antagonistMuscleGroup, ExerciseType exerciseType) {
+    public Exercise(){}
+    public Exercise(String nameOfExercise, DifficultyOfExercise difficultyOfExercise, MuscleGroup muscleGroup, MuscleGroup antagonistMuscleGroup, ExerciseType exerciseType) {
         this.nameOfExercise = nameOfExercise.toUpperCase(Locale.ROOT);
         this.difficultyOfExercise = difficultyOfExercise;
         this.muscleGroup = muscleGroup;
@@ -100,5 +99,14 @@ public class ExerciseClass {
             case WEIGHTLOSS -> reps = 10;
         }
         return reps;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "id = %d name = %s difficulty = %s muscle = %s antagonist = %s type = %s".formatted(getId(), getNameOfExercise(), getDifficultyOfExercise(), getMuscleGroup(), getAntagonistMuscleGroup(), getExerciseType());
     }
 }
