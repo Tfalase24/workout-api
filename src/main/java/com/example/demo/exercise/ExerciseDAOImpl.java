@@ -1,6 +1,7 @@
 package com.example.demo.exercise;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,15 @@ public class ExerciseDAOImpl implements ExerciseDAO{
     }
     @Override
     @Transactional
-    public void save(ExerciseClass exercise) {
+    public void save(Exercise exercise) {
         entityManager.persist(exercise);
     }
+
+    @Override
+    public Exercise findExercise(String name) {
+        TypedQuery<Exercise> theQuery = entityManager.createQuery("FROM Exercise", Exercise.class);
+        return theQuery.getSingleResult();
+    }
+
+
 }
