@@ -20,6 +20,7 @@ public class WorkoutApiApplication {
 			addExerciseToDatabase(exerciseDAO);
 			readExerciseFromDatabase(exerciseDAO);
 			readExerciseFromDatabaseByMuscleGroup(exerciseDAO, MuscleGroup.QUADRICEP);
+			updateExerciseInDatabase(exerciseDAO, "SQUAT");
 			System.out.println("Command Line Runner has ended");
 		};
 	}
@@ -43,5 +44,15 @@ public class WorkoutApiApplication {
 		Exercise responseExercise = exerciseDAO.findByMuscleGroup(muscleGroup);
 		System.out.println(responseExercise);
 		System.out.println("Finished reading the table again");
+	}
+
+	private void updateExerciseInDatabase(ExerciseDAO exerciseDAO, String name){
+		System.out.println("Find the database entry");
+		Exercise exercise = exerciseDAO.findExercise(name);
+		System.out.println("Setting the Antagonist Muscle Group");
+		exercise.setAntagonistMuscleGroup(MuscleGroup.CALF);
+		System.out.println("Update the Object");
+		exerciseDAO.updateExercise(exercise);
+
 	}
 }
