@@ -2,6 +2,7 @@ package com.example.demo.Workout;
 
 import com.example.demo.exercise.ExerciseClass;
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +23,13 @@ public class WorkoutClass {
     public WorkoutClass() {
     }
 
-    public WorkoutClass(long id, TypeOfWorkout typeOfWorkout) {
-        this.id = id;
+    public WorkoutClass(TypeOfWorkout typeOfWorkout) {
         this.typeOfWorkout = typeOfWorkout;
         this.exercises = new ArrayList<>();
+    }
+
+    public void addExercise(ExerciseClass exercise){
+        exercises.add(exercise);
     }
 
 }
