@@ -34,5 +34,11 @@ public class ExerciseDAOImpl implements ExerciseDAO{
         return theQuery.getSingleResult();
     }
 
+    @Override
+    @Transactional
+    public void updateExercise(Exercise exercise) {
+        entityManager.merge(exercise);
+    }
+
 
 }
