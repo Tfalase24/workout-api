@@ -7,4 +7,6 @@ public interface ExerciseDAO {
     Exercise findExercise(String name);
 
     Exercise findByMuscleGroup(MuscleGroup muscleGroup);
+
+    void updateExercise(Exercise exercise);
 }
