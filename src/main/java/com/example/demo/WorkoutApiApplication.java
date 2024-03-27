@@ -21,6 +21,7 @@ public class WorkoutApiApplication {
 			readExerciseFromDatabase(exerciseDAO);
 			readExerciseFromDatabaseByMuscleGroup(exerciseDAO, MuscleGroup.QUADRICEP);
 			updateExerciseInDatabase(exerciseDAO, "SQUAT");
+			deleteExerciseInDatabaseBasedOnName(exerciseDAO,"SQUAT");
 			System.out.println("Command Line Runner has ended");
 		};
 	}
@@ -54,5 +55,10 @@ public class WorkoutApiApplication {
 		System.out.println("Update the Object");
 		exerciseDAO.updateExercise(exercise);
 
+	}
+
+	private void deleteExerciseInDatabaseBasedOnName(ExerciseDAO exerciseDAO, String name){
+		exerciseDAO.deleteExercise(name);
+		System.out.println("Exercise was deleted");
 	}
 }
