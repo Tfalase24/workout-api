@@ -40,5 +40,12 @@ public class ExerciseDAOImpl implements ExerciseDAO{
         entityManager.merge(exercise);
     }
 
+    @Override
+    @Transactional
+    public void deleteExercise(String name) {
+        Exercise exercise = findExercise(name);
+        entityManager.remove(exercise);
+    }
+
 
 }
