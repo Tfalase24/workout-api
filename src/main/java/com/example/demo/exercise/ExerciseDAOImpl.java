@@ -22,8 +22,9 @@ public class ExerciseDAOImpl implements ExerciseDAO{
     }
 
     @Override
-    public Exercise findExercise(String name) {
-        TypedQuery<Exercise> theQuery = entityManager.createQuery("FROM Exercise", Exercise.class);
+    public Exercise findExerciseByName(String name) {
+        TypedQuery<Exercise> theQuery = entityManager.createQuery("FROM Exercise WHERE nameOfExercise = :theData", Exercise.class);
+        theQuery.setParameter("theData", name);
         return theQuery.getSingleResult();
     }
 
@@ -43,7 +44,7 @@ public class ExerciseDAOImpl implements ExerciseDAO{
     @Override
     @Transactional
     public void deleteExercise(String name) {
-        Exercise exercise = findExercise(name);
+        Exercise exercise = findExerciseByName(name);
         entityManager.remove(exercise);
     }
 
