@@ -9,4 +9,6 @@ public interface ExerciseDAO {
     Exercise findByMuscleGroup(MuscleGroup muscleGroup);
 
     void updateExercise(Exercise exercise);
+
+    void deleteExercise(String name);
 }
